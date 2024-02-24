@@ -1,0 +1,29 @@
+<form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+    <label for="name">Name: </label>
+<input id="firstname" type="text" formControlName="firstname"><br><br>
+
+<label for="lastname">lastname:</label>
+<input id="lastname" type="text" formControlName="secondname"><br><br>
+
+<label for="emailid">emailid:</label>
+<input id="emailid" type="email" formControlName="email"><br><br>
+
+<label for="birthday">Birthday:</label>
+<input type="date" id="birthday" name="birthday" formControlName="birthday"><br><br>
+
+<label for="password">password:</label>
+<input id="password" type="password" formControlName="password"><br><br>
+
+<label for="confirmpassword">confirm password</label>
+<input id="confirmpassword" type="password" formControlName="confirmpassword"><br><br>
+
+<label for="address">address:</label>
+<input id="address" type="largetext" formControlName="address"><br><br>
+
+<label for="mobile">phone number:</label>
+<input id="mobile" type="number" formControlName="mobile"><br><br>
+
+<button type="submit" [disabled]="!profileForm.valid">submit</button>
+</form><br><br>
+
+<a routerLink="/details"><h3>List</h3></a>
