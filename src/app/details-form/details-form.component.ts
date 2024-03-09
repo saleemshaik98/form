@@ -2,7 +2,6 @@ import { ConnectorService } from './../service/connector.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { personal } from '../personal';
 
 @Component({
   selector: 'app-details-form',
@@ -33,7 +32,6 @@ constructor(private service: ConnectorService, private route: Router){}
   onSubmit()
   {
     const formdata = this.profileForm.value;
-    console.log(formdata);
     this.service.adddetails(formdata);
     //this.profileForm.reset();
   }

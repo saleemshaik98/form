@@ -1,3 +1,4 @@
+import { ConnectorService } from './../service/connector.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -9,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit  {
   loginForm = new FormGroup({
-    name: new FormControl('', Validators.required),
+    username: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required),
   });
 
@@ -17,21 +18,22 @@ export class LoginComponent implements OnInit  {
 
   }
  
-   constructor(private route : Router){
+   constructor(private route : Router,private service:ConnectorService){
 
    }
 
   onSubmit()
   {
-    localStorage.clear();
-    if(this.loginForm.controls.name.value == 'admin' && this.loginForm.controls.password.value == 'admin'){
-      localStorage.setItem('isLoggedin','true');
-      this.route.navigateByUrl('/form');
-    }
-    else{
-      localStorage.setItem('isLoggedin','false');
-      alert("failed to login")
-    }
-  }
+    var value: any;
+    this.service.authservice(this.loginForm.value).subscribe((res: any) =>  {value=res
+      if(value.status){
+        this.route.navigateByUrl('/form');
+      }else{
+        alert("Invalid Username or password");
+      }   
+    
+  });
+}
+ 
 
 }

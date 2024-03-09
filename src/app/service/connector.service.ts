@@ -1,7 +1,7 @@
-import { ErrorHandler, Injectable } from '@angular/core';
+import {  Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { personal } from '../personal';
-import { Observable, catchError } from 'rxjs';
+import { Observable} from 'rxjs';
 
 
 @Injectable({
@@ -11,19 +11,33 @@ export class ConnectorService {
 
   constructor(private http: HttpClient) { }
 
+
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
 
   getDetails(): Observable<personal> {
-    const heroes= this.http.get<personal>("http://localhost:8080/details"); 
+    const heroes = this.http.get<personal>("http://localhost:8080/details"); 
     return heroes;
   }
 
   adddetails(detail : any) {
-    console.log(detail);
      (this.http.post<any>("http://localhost:8080/add", detail, this.httpOptions)).subscribe()
     ,(err: any) => console.log(err);
+  }
+
+  authservice(data: any){
+    const values : any = this.http.post<any>("http://localhost:8080/login", data,this.httpOptions);
+    return values;
+  }
+
+  getAuthStatus(){
+    const values : any =this.http.get<any>("http://localhost:8080/auth-check");
+    return values;
+  }
+
+  getout(){
+    return this.http.get<any>("http://localhost:8080/logout");
   }
 }

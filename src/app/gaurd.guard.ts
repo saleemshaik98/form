@@ -1,19 +1,24 @@
 import { Injectable } from '@angular/core';
-import {  CanActivate } from '@angular/router';
-import { Observable } from 'rxjs';
+import {  ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot } from '@angular/router';
+import { Router } from '@angular/router';
+import { ConnectorService } from './service/connector.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GaurdGuard implements CanActivate {
-  canActivate(){
-    if(localStorage.getItem("isLoggedin") === 'true')
-    {
-      return true;
+
+  constructor(private authService : ConnectorService, private router :Router){}
+  canActivate( 
+    route: ActivatedRouteSnapshot, 
+    state: RouterStateSnapshot): boolean  { 
+      return this.authService.getAuthStatus().subscribe((res: any) => {
+        if (!res.status) {
+          this.router.navigate(['/login']);
+          return false;
+        }
+        return true;
+      });
     }
-    else{
-      return false;
-    }
-  }
   
 }

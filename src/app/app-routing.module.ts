@@ -9,7 +9,7 @@ const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent},
   { path: 'form', component: DetailsFormComponent, canActivate: [GaurdGuard] },
-  { path: 'details', component: DetailsComponent }
+  { path: 'details', component: DetailsComponent, canActivate: [GaurdGuard] }
   
 ];
 

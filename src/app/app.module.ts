@@ -7,13 +7,15 @@ import { LoginComponent } from './login/login.component';
 import { DetailsFormComponent } from './details-form/details-form.component';
 import { DetailsComponent } from './details/details.component';
 import { HttpClientModule } from '@angular/common/http';
+import { SahredcompComponent } from './sahredcomp/sahredcomp.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     DetailsFormComponent,
-    DetailsComponent
+    DetailsComponent,
+    SahredcompComponent
   ],
   imports: [
     BrowserModule,
