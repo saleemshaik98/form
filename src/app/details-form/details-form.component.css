@@ -1,0 +1,15 @@
+.rounded-input {
+    border: 2px solid #ccc;
+    border-radius: 20px; /* Adjust the border-radius value for the desired roundness */
+    padding: 10px;
+    margin-right: 40px;
+    font-size: 10px;
+    width: 300px; /* Adjust the width of the input as needed */
+    box-sizing: border-box; /* Ensure padding and border are included in the width */
+  }
+
+  .show{
+    text-align: center;
+    color:green;
+    text-decoration: underline;
+  }
