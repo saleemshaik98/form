@@ -1,11 +1,10 @@
+<h1 class="show">Employee Directory</h1>
 <div class="container">
 <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
 <label for="name">Name: </label>
-<input id="name" type="text" formControlName="username"><br>
+<input class="rounded-input" id="name" type="text" formControlName="username"><br>
 <label for="password">Password:</label>
-<input id="password" type="password" formControlName="password"><br>
-<button type="reset">Reset</button>
-<p>Complete the form to enable button.</p>
-<button type="submit" [disabled]="!loginForm.valid">Submit</button>
+<input class="rounded-input" id="password" type="password" formControlName="password"><br><br>
+<button type="submit" [ngClass]="loginForm.valid? 'btn btn-outline-success':''">login</button>
 </form>
 </div>

@@ -1,5 +1,5 @@
 import {  Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { personal } from '../personal';
 import { Observable} from 'rxjs';
 
@@ -39,5 +39,9 @@ export class ConnectorService {
 
   getout(){
     return this.http.get<any>("http://localhost:8080/logout");
+  }
+
+  delete(name :any) : any{
+    return this.http.post<any>("http://localhost:8080/delete", name, this.httpOptions);
   }
 }

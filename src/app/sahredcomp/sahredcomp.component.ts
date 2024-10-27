@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { ConnectorService } from '../service/connector.service';
+import { Component, Input, OnInit } from '@angular/core';
+import { ConnectorService } from '../services/connector.service';
 import { Router } from '@angular/router';
+import { map, take } from 'rxjs';
 
 @Component({
   selector: 'app-sahredcomp',
@@ -10,13 +11,18 @@ import { Router } from '@angular/router';
 export class SahredcompComponent implements OnInit{
 
   values:any;
+  message : string | undefined;
+  
 
   constructor(private service : ConnectorService, private route : Router){}
 
    ngOnInit() {
-    this.service.getAuthStatus().subscribe((res:any) =>{ this.values=res; 
-      console.log(this.values);
-    });
+    this.service.getAuthStatus().pipe(
+      take(1),
+      map((res :  any) =>{
+        this.values =res;
+      })
+    ).subscribe();
   }
 
   logout(){
@@ -27,6 +33,6 @@ export class SahredcompComponent implements OnInit{
         alert("logout failed");
       }
     });
-
+    this.values.status=false;
   }
 }

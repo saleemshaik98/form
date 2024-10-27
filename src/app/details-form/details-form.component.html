@@ -1,29 +1,39 @@
-<form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
-    <label for="name">Name: </label>
-<input id="firstname" type="text" formControlName="firstname"><br><br>
+<div class="show"><h3>Please Fill Your Details</h3></div><br>
 
-<label for="lastname">lastname:</label>
-<input id="lastname" type="text" formControlName="secondname"><br><br>
 
-<label for="emailid">emailid:</label>
-<input id="emailid" type="email" formControlName="email"><br><br>
+<form [formGroup]="profileForm" class="text-bg-secondary p-3 mb-3" (ngSubmit)="onSubmit()">
+  <div class="row g-3 align-items-center">
+    <label class="col-auto form-label" for="name">Name: </label>
+<input class="rounded-input form-label" id="firstname" type="text" formControlName="firstname">
 
-<label for="birthday">Birthday:</label>
-<input type="date" id="birthday" name="birthday" formControlName="birthday"><br><br>
+<label class="col-auto" for="lastname">Lastname:</label>
+<input class=" rounded-input" id="lastname" type="text" formControlName="secondname">
 
-<label for="password">password:</label>
-<input id="password" type="password" formControlName="password"><br><br>
+<label class="col-auto" for="emailid">Emailid:</label>
+<input class="rounded-input" id="emailid"  type="email" formControlName="email">
+</div><br>
 
-<label for="confirmpassword">confirm password</label>
-<input id="confirmpassword" type="password" formControlName="confirmpassword"><br><br>
+<div class="row g-3 align-items-center">
+<label class="col-auto" for="birthday">Birthday:</label>
+<input type="date" class="col-auto rounded-input" id="birthday" name="birthday" formControlName="birthday">
 
-<label for="address">address:</label>
-<input id="address" type="largetext" formControlName="address"><br><br>
+<label for="password" class="col-auto">password:</label>
+<input id="password" class="col-auto rounded-input" type="password" [(ngModel)]="pValue" formControlName="password">
 
-<label for="mobile">phone number:</label>
-<input id="mobile" type="number" formControlName="mobile"><br><br>
+<label for="confirmpassword" class="col-auto">confirm password</label>
+<input id="confirmpassword" class="col-auto rounded-input" type="password" formControlName="confirmpassword" (click)="checkingPassword()">
+<span *ngIf="profileForm.errors?.['passwordmatcherror']"> password miss-match</span>
+</div><br>
+
+<div class="row g-3 align-items-center">
+<label for="address" class="col-auto">address:</label>
+<input id="address" class="col-auto rounded-input" type="largetext" formControlName="address">
+
+<label for="mobile" class="col-auto">phone number:</label>
+<input id="mobile" class="col-auto rounded-input" type="text" formControlName="phnnum" appMyDirective>
+</div><br>
 
 <button type="submit" [disabled]="!profileForm.valid">submit</button>
 </form><br><br>
 
-<a routerLink="/details"><h3>List</h3></a>
+<a class="btn btn-primary" routerLink="/details"><h4>List</h4></a>

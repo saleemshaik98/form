@@ -1,11 +1,27 @@
-
-<div *ngFor="let hero of data">
-    <div class="dotted" >
-    <ol>{{hero.firstname}}</ol>
-    <ol>{{hero.secondname}}</ol>
-    <ol>{{hero.email}}</ol>
-    <ol>{{hero.birthday.substring(0,10)}}</ol>
-    <ol>{{hero.address}}</ol>
-    <ol>{{hero.phnnum}}</ol>
-</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email Id</th>
+            <th>Birthday</th>
+            <th>Address</th>
+            <th>Phn Number</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody *ngFor="let hero of data">
+    <tr class="table-success">
+        <td>{{hero.firstname}}</td>
+        <td>{{hero.secondname}}</td>
+        <td>{{hero.email}}</td>
+        <td>{{hero.birthday.substring(0,10)}}</td>
+        <td>{{hero.address}}</td>
+        <td>{{hero.phnnum}}</td>
+        <td><a class="btn btn-success" routerLink="/updatedetails" (click)="dataTransfer(hero)" >Update</a><button style="margin-left: 10px;" class="btn btn-danger" (click)="delete(hero.firstname)">Delete</button></td>
+    </tr>
+    </tbody>
+</table>
+<div class="show">
+    <a class="btn btn-info" routerLink="/form"><h6>To Form</h6></a>
 </div>

@@ -1,0 +1,37 @@
+<form [formGroup]="profileForm" class="text-bg-secondary p-3 mb-3" (ngSubmit)="onUpdate()">
+    <div class="row g-3 align-items-center">
+      <label class="col-auto form-label" for="name">Name: </label>
+  <input class="rounded-input form-label" id="firstname" type="text" formControlName="firstname">
+  
+  <label class="col-auto" for="lastname">Lastname:</label>
+  <input class=" rounded-input" id="lastname" type="text" formControlName="secondname">
+  
+  <label class="col-auto" for="emailid">Emailid:</label>
+  <input class="rounded-input" id="emailid"  type="email" formControlName="email">
+  </div><br>
+  
+  <div class="row g-3 align-items-center">
+  <label class="col-auto" for="birthday">Birthday:</label>
+  <input type="date" class="col-auto rounded-input" id="birthday" name="birthday" formControlName="birthday">
+  
+  <label for="password" class="col-auto">password:</label>
+  <input id="password" class="col-auto rounded-input" type="password" formControlName="password">
+  
+  <label for="confirmpassword" class="col-auto">confirm password</label>
+  <input id="confirmpassword" class="col-auto rounded-input" type="password" formControlName="confirmpassword">
+  </div><br>
+  
+  <div class="row g-3 align-items-center">
+  <label for="address" class="col-auto">address:</label>
+  <input id="address" class="col-auto rounded-input" type="largetext" formControlName="address">
+  
+  <label for="mobile" class="col-auto">phone number:</label>
+  <input id="mobile" class="col-auto rounded-input" type="text" formControlName="phnnum" appMyDirective>
+  </div><br>
+  
+  <button type="submit" [disabled]="!profileForm.valid">Update</button>
+  </form><br><br>
+  <div class="show">
+<a class="btn btn-info" routerLink="/form"> To Form</a>
+<a class="btn btn-info" style="margin-left: 10px;" routerLink="/details">To List</a>
+</div>

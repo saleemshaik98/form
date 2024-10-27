@@ -8,6 +8,8 @@ import { DetailsFormComponent } from './details-form/details-form.component';
 import { DetailsComponent } from './details/details.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SahredcompComponent } from './sahredcomp/sahredcomp.component';
+import { MyDirectiveDirective } from './my-directive.directive';
+import { UpdateDetailsComponent } from './update-details/update-details.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import { SahredcompComponent } from './sahredcomp/sahredcomp.component';
     LoginComponent,
     DetailsFormComponent,
     DetailsComponent,
-    SahredcompComponent
+    SahredcompComponent,
+    MyDirectiveDirective,
+    UpdateDetailsComponent
   ],
   imports: [
     BrowserModule,

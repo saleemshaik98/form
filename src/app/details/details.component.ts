@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ConnectorService } from '../service/connector.service';
+import { ConnectorService } from '../services/connector.service';
 import { personal } from '../personal';
+import { SharedDataService } from '../services/shared-data.service';
 
 @Component({
   selector: 'app-details',
@@ -10,9 +11,10 @@ import { personal } from '../personal';
 export class DetailsComponent implements OnInit{
 
    data : any=[];
+   update:any;
    
 
-  constructor(private service:ConnectorService){}
+  constructor(private service:ConnectorService, private sharedservice:SharedDataService){}
 
 
 
@@ -23,10 +25,20 @@ export class DetailsComponent implements OnInit{
 
   getdata() : void{
     
-    this.service.getDetails().subscribe(res => this.data = res );
-    
-  
-    
+    this.service.getDetails().subscribe(res => {
+      this.data = res;
+     });
+  }
+
+  delete(name :any){
+    this.service.delete(name).subscribe((res: any) => {
+      this.data = res;
+    },(error: any) => {
+      console.error('Error occurred while deleting:', error);});
+  }
+
+  dataTransfer(hero : personal){
+    this.sharedservice.updateData(hero);
   }
 
 }
